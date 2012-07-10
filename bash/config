@@ -1,0 +1,9 @@
+#==== TERMINAL CONFIG ====
+
+	# crazy listing options ( gives current path with ls )
+	 #PS1="\e[1;30m\][\e[\e[1;30m\]\e[1;33m\] \u@\H \[\e[1;32m\]\w\[\e[0m\] \e[1;30m\]]\n[\[ \e[1;31m\]\T\[\e[0m\]\e[1;30m\] ] >>> \e[37m\]"
+	
+  # Color folders and files differntly for quick reference
+    #export CLICOLOR=1
+    #export LSCOLORS=Cxfxcxdxbxegedabagacad
+  

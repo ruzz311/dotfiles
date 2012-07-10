@@ -1,0 +1,113 @@
+
+#-- System
+
+	alias meow="growlnotify -a 'Terminal' 'System Message' -m $*";
+	#-- Processes
+		alias tu='top -o cpu' 	#cpu
+		alias tm='top -o vsize' #memory
+	#-- Shell Management
+		alias reload="source $HOME/Library/Scripts/bash/aliases && echo 'Your aliases have been reloaded' && meow 'Your aliases have been reloaded'"
+		alias ea="subl -w $HOME/Library/Scripts/bash/aliases && reload"
+		# Disable/Enable Spotlight
+			alias spotoff="sudo mdutil -a -i off"
+			alias spoton="sudo mdutil -a -i on"
+	#-- iTerm commands
+		alias tn="iterm.sh tabname"
+	#-- Widgets on your desktop
+		alias widgets_on="defaults write com.apple.dashboard devmode YES"
+		alias widgets_off="defaults write com.apple.dashboard devmode NO"
+
+
+#-- Networking
+
+	alias add_host="$HOME/Library/Scripts/bin/add_host.sh";
+	# IP Addresses
+		alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+		alias localip="ipconfig getifaddr en1"
+		alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+		alias whois="whois -h whois-servers.net"
+	# Flush Directory Service cache
+		alias flush="dscacheutil -flushcache"
+	# View HTTP traffic
+		alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+		alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+
+#-- Directory Traversal
+
+	alias dir="ls -l; pwd"
+	alias l="ls -la; pwd"
+	alias ..="cd ..;"
+	alias cdd="cd -;"
+	alias gotoscripts="cd $HOME/Library/Scripts/; dir;"
+
+
+#-- Files
+
+	
+	# Hide/show all desktop icons (useful when presenting)
+		alias hidedesk="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+		alias showdesk="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+	# Recursively delete '.DS_Store' files
+		alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+	# Empty the Trash
+		alias emptytrash="rm -rfv ~/.Trash"
+	# zip a dir ("zipr compressed.zip ./dir/name")
+		alias zipr='zip -r'
+	# copy result of pwd to clipboard
+		function cpwd(){ pwd | tr -d '\n' | pbcopy }
+	# Show/hide hidden files in Finder
+		function show(){
+			defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder; 
+			growlnotify -a 'Finder' 'Show/Hide Files' -m 'Hidden files will be visible in finder';
+		}
+		function hide(){
+			defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder; 
+			growlnotify -a 'Finder' 'Show/Hide Files' -m 'Hidden files will no longer be visible in finder'
+		}
+	#base 64 encode a file
+		function b64enc(){
+			openssl enc -base64 -in $1 | tr -d '\n' | pbcopy
+		}
+
+
+#-- Git 
+
+	alias g='git status' 							#git help
+	alias gc='git commit -v' 					#git commit
+	alias gca='git commit -v -a' 			#git commits
+	alias gsup='git submodule update' #update submodule
+	function gg() { git commit -v -a -m "$*" }
+	# Undo a `git push`
+		alias undopush="git push -f origin HEAD^:master"
+
+
+#- PROJECTS
+
+	# create project boilerplate (backbone, node)
+	alias igota="project-templater $*"
+
+
+#- GENERAL
+	
+	#- TRIGGER.IO Mobile Development
+	alias forgeTools="cd /Users/rmadsen/Developer/SDKs/forge-tools/; source go.sh; cd -;"
+
+	#- Local cloud9 IDE
+	alias c9="$HOME/Library/Scripts/bin/cloud9.sh"
+
+	#- NODE
+		alias cpm="npm --registry http://registry.cpm.iriscouch.com/"
+		function curNPM {
+			which npm;
+		}
+		function stylecmpyl(){
+			stylus --line-numbers --use /Users/rmadsen/.nvm/v0.6.12/lib/nib --watch "$1"
+		}
+	#- MONGO DB (http://blog.jiaeil.com/noteit/2010/05/19/install-mongodb-via-macports-on-mac/)
+		alias mongostart="sudo mongod -f /opt/local/etc/mongodb/mongod.conf"
+		##alias nave='$HOME/scripts/nave/nave.sh' # NODE version shell ( use with arguments to get different versions )	
+
+	#- FROM https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+		alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
+

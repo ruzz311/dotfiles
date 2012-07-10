@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+TEMPLATE='/Users/rmadsen/Developer/Library/Project-Boilerplates/backbone-boilerplate';
+PROJECT_DIR='./'
+EXPECTED_ARGS=2
+E_BADARGS=65
+
+# ensure there are enough arguments to run
+if [ $# -lt $EXPECTED_ARGS ]; then
+  
+  echo '';
+  echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
+  echo 'You must supply a project template to clone from!'
+  echo 'Please use the following convention when creating a new project'
+  echo '     igota <"boner"|"node"> [project_path]'
+  echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
+  echo '';
+  #exit $E_BADARGS
+
+else
+  
+  # set default install dir if it is not supplied
+  if [ $# -ne 3 ]; then
+    echo 'Installing to current directory...\n';
+  else
+    PROJECT_DIR=$2;
+  fi
+  
+  # create new project from templates library
+  if [[ $1 == 'boner' ]]; then
+    echo "\n\nCreating Backbone Project...\n";
+    cp -r $TEMPLATE $PROJECT_DIR;
+    cd $PROJECT_DIR;
+    rm -rf .git
+    pwd;
+  elif [[ $1 == 'node' ]]; then
+    echo "\n\nCreating Node Project...\n"
+    express -v;
+    express -c stylus -sessions $PROJECT_DIR;
+    cd $PROJECT_DIR;
+    npm install -d;
+    pwd;
+  fi
+fi

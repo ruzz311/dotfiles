@@ -1,0 +1,39 @@
+
+#===== TOOLS ======
+
+#Brew told me to
+	export PATH="/usr/local/bin:$PATH"
+
+# User Scripts
+	export PATH="$HOME/Library/Scripts/bin:$PATH"
+
+# Android SDK [ util ]
+	export PATH="$HOME/Developer/SDKs/android-sdk-mac_x86:$PATH"
+
+# Ruby [ util ]
+	# load RVM(ruby) into a shell session. ( For more, read: http://goo.gl/XZdxG )
+	[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# DISABLED CONFIGS
+		# Nodejs [ util ]
+			# export PATH="$HOME/local/node/bin:$PATH"
+			# export NODE_PATH="$HOME/local/node:$HOME/local/node/lib/node_modules"
+			# [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
+		# Misc general pathing [ util ]
+			#export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH"
+
+
+#===== ENVIRONMENT VARS =====
+	
+#TEXT EDITOR
+	export EDITOR="subl -w"
+
+#FREQUENT DIRECTORIES
+	export CDPATH='.:~:~/Developer:~/Sites'
+
+#REDISTOGO.com CONFIG
+	export REDISTOGO_URL="redis://ruzz311:7ef92b9789239da563b01058164c2935@fish.redistogo.com:9245/"
+	
+#hubot
+	export HUBOT_GTALK_USERNAME="ruzzbot"
+	export HUBOT_GTALK_PASSWORD="r2577975"
