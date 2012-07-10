@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TEMPLATE='/Users/rmadsen/Developer/Library/Project-Boilerplates/backbone-boilerplate';
+TEMPLATE='~/Developer/Library/Project-Boilerplates/backbone-boilerplate';
 PROJECT_DIR='./'
 EXPECTED_ARGS=2
 E_BADARGS=65
