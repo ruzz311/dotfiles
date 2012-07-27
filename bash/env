@@ -1,4 +1,3 @@
-
 #===== TOOLS ======
 
 #Brew told me to
@@ -32,8 +31,8 @@
 	export CDPATH='.:~:~/Developer:~/Sites'
 
 #REDISTOGO.com CONFIG
-	export REDISTOGO_URL="redis://ruzz311:7ef92b9789239da563b01058164c2935@fish.redistogo.com:9245/"
+	export REDISTOGO_URL="redis://name&pass@fish.redistogo.com:9245/"
 	
 #hubot
-	export HUBOT_GTALK_USERNAME="ruzzbot"
-	export HUBOT_GTALK_PASSWORD="r2577975"
+	export HUBOT_GTALK_USERNAME=""
+	export HUBOT_GTALK_PASSWORD=""
